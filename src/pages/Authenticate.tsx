@@ -86,7 +86,7 @@ export const Authenticate = () => {
         <div className="flex flex-row justify-center">
           <button
             type="submit"
-            className="ml-3 inline-block rounded-md bg-green-600 opacity-100 px-16 py-1 text-xs font-medium text-white"
+            className="ml-3 inline-block rounded-md bg-green-600 opacity-100 px-10 py-1 text-xs font-medium text-white"
           >
             <Link to="/Authencode">Send code</Link>
           </button>
