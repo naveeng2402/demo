@@ -1,5 +1,6 @@
 import bg from "../assets/pawel-czerwinski-BFxnx0UHVGM-unsplash.jpg";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -10,14 +11,15 @@ const Login = () => {
       <div className="mx-auto h-auto w-96 px-4 py-16 sm:px-6 lg:px-8 bg-slate-50/70 rounded-md content-center">
         {/* title of the form */}
         <div className="mx-auto max-w-lg text-center">
-          <h1
+          <div
             className="h-10 w-60 bg-no-repeat"
             style={{ backgroundImage: `url(${logo})` }}
-          ></h1>
+          ></div>
         </div>
         {/* starting of the form*/}
 
         <form action="" className="mx-auto mt-8 mb-0 max-w-md space-y-4">
+          {/* Email */}
           <div>
             <label htmlFor="email" className="sr-only">
               Email
@@ -48,6 +50,8 @@ const Login = () => {
               </span>
             </div>
           </div>
+
+          {/* Password */}
 
           <div>
             <label htmlFor="password" className="sr-only">
@@ -84,23 +88,25 @@ const Login = () => {
               </span>
             </div>
           </div>
+          {/* span tag */}
           <p className="mt-4 text-gray-500 text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
             nulla eaque error neque ipsa culpa autem, at itaque nostrum!
           </p>
+          {/* span tag ends */}
 
+          {/* button */}
           <div className="flex items-center justify-center">
-            {/* button */}
             <button
               type="submit"
               className="ml-3 inline-block rounded-lg bg-blue-500 opacity-100 px-28 py-3 text-sm font-medium text-white"
             >
-              Sign in
+              <Link to="/authentication">Sign in</Link>
             </button>
             {/* button ends */}
           </div>
         </form>
-        {/* starting of the form*/}
+        {/* ending of the form*/}
       </div>
     </div>
   );
