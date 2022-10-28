@@ -2,7 +2,7 @@ import megaMenuData from "../data/megaMenu.json";
 import { ReactComponent as Chevron } from "../assets/icons/chevron.svg";
 import { ReactComponent as Hamburger } from "../assets/icons/hamburger.svg";
 import { Disclosure } from "@headlessui/react";
-import { createRef, useMemo } from "react";
+import { createRef, useMemo, useRef, useState } from "react";
 
 const MegaMenu = () => {
   // References for all the disclosure buttons
@@ -28,13 +28,30 @@ const MegaMenu = () => {
     });
   };
 
+  const navRef = useRef<HTMLElement>(null);
+
   return (
     <>
-      <button className="absolute left-4 top-20 sm:hidden">
+      <button
+        className="absolute left-4 top-[20vw] sm:hidden"
+        onClick={() => {
+          navRef.current?.classList.toggle("hidden");
+        }}
+      >
         <Hamburger className="w-8" />
       </button>
-      <nav className="hidden w-screen px-4 sm:flex bg-primary-600  text-white">
-        {megaMenuData.slice(0, 5).map((menu, idx) => (
+      <nav
+        ref={navRef}
+        className="block w-screen px-4 sm:flex bg-primary-600 sm:overflow-scroll text-white"
+      >
+        <a
+          href="#"
+          className="px-4 py-2"
+          onClick={() => handleClosingOthers("-1")}
+        >
+          Home
+        </a>
+        {megaMenuData.map((menu, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (
               <div className="">
@@ -42,7 +59,7 @@ const MegaMenu = () => {
                   ref={navRegionRefs[idx]}
                   data-id={idx}
                   data-open={open}
-                  className={`px-4 py-2 flex gap-2 items-center justify-center ${
+                  className={`px-4 py-2 mx-auto sm:mx-0 flex gap-2 items-center justify-center ${
                     open ? "bg-primary-700" : "bg-primary-600"
                   }`}
                   onClick={() => handleClosingOthers(idx.toString())}
@@ -54,7 +71,7 @@ const MegaMenu = () => {
                     }`}
                   />
                 </Disclosure.Button>
-                <Disclosure.Panel className="absolute flex flex-wrap gap-4 bg-primary-700 py-2 px-4  w-full left-0">
+                <Disclosure.Panel className="sm:absolute flex flex-wrap gap-4 bg-primary-700 py-2 px-4  w-full left-0">
                   {menu.content.map((cont, idx) => {
                     return (
                       <div key={idx}>
