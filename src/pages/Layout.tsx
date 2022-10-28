@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
+import { Header, MegaMenu } from "../components";
 
 const Layout = () => {
   return (
     <div>
-      <div>Layout</div>
+      <Header />
+      <MegaMenu />
       <Outlet />
     </div>
   );

@@ -1,3 +1,4 @@
 import MegaMenu from "./MegaMenu";
+import Header from "./Header";
 
-export { MegaMenu };
+export { MegaMenu, Header };
